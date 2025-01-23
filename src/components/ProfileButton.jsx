@@ -6,16 +6,16 @@ import { useRouter } from "next/navigation";
 
 const ProfileButton = () => {
   const { isAuthenticated } = useKindeBrowserClient();
-//   console.log(isAuthenticated);
+  console.log(isAuthenticated);
 
-  const router = useRouter()
+  const router = useRouter();
 
-  const handleClick = () =>{
-    if(!isAuthenticated){
-        return router.push("/api/auth/login?post_login_redirect_url=/")
+  const handleClick = () => {
+    if (!isAuthenticated) {
+      return router.push("/api/auth/login?post_login_redirect_url=/");
     }
-    router.push("/profile")
-  }
+    router.push("/profile");
+  };
 
   return (
     <div>

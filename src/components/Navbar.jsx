@@ -80,7 +80,9 @@ const Navbar = async () => {
           <ul className="space-x-12 text-md menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end space-x-3">
-          <h1 className="text-sm">Hi, {user?.given_name}</h1>
+          {isUserAuthenticated && (
+            <h1 className="text-sm">Hi, {user?.given_name}</h1>
+          )}
           {authLinks}
         </div>
       </div>
