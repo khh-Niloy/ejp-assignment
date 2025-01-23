@@ -25,7 +25,7 @@ const Navbar = async () => {
   const authLinks = (
     <>
       {isUserAuthenticated ? (
-        <LogoutLink redirectUri="/">
+        <LogoutLink redirectUri="https://ejp-assignment-ochre.vercel.app/">
           <Button
             size="sm"
             className="active:scale-105 hover:scale-[1.03] duration-300 shadow-xl"
