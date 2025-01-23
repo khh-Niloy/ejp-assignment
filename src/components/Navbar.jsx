@@ -1,18 +1,48 @@
-"use client";
-
 import Link from "next/link";
-import React from "react";
+import {
+  RegisterLink,
+  LoginLink,
+  LogoutLink,
+} from "@kinde-oss/kinde-auth-nextjs/components";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import ProfileButton from "@/components/ProfileButton";
 import { Button } from "./ui/button";
 
-const Navbar = () => {
+const Navbar = async () => {
+  const { isAuthenticated, getUser } = getKindeServerSession();
+  const isUserAuthenticated = await isAuthenticated();
+  const user = await getUser();
+
   const links = (
     <>
       <li>
         <Link href="/">Home</Link>
       </li>
-      <li>
-        <Link href="/profile">Pofile</Link>
-      </li>
+      <ProfileButton>Profile</ProfileButton>
+    </>
+  );
+
+  const authLinks = (
+    <>
+      {isUserAuthenticated ? (
+        <LogoutLink>
+          <Button
+            size="sm"
+            className="active:scale-105 hover:scale-[1.03] duration-300 shadow-xl"
+          >
+            Logout
+          </Button>
+        </LogoutLink>
+      ) : (
+        <LoginLink>
+          <Button
+            size="sm"
+            className="active:scale-105 hover:scale-[1.03] duration-300 shadow-xl"
+          >
+            Login
+          </Button>
+        </LoginLink>
+      )}
     </>
   );
 
@@ -50,8 +80,8 @@ const Navbar = () => {
           <ul className="space-x-12 text-md menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end space-x-3">
-          <Button size="sm" className="">Sign in</Button>
-          <Button size="sm" className="">Sign out</Button>
+          <h1 className="text-sm">Hi, {user?.given_name}</h1>
+          {authLinks}
         </div>
       </div>
     </div>
