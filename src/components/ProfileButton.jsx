@@ -6,8 +6,6 @@ import { useRouter } from "next/navigation";
 
 const ProfileButton = () => {
   const { isAuthenticated } = useKindeBrowserClient();
-  console.log(isAuthenticated);
-
   const router = useRouter();
 
   const handleClick = () => {
