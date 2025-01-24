@@ -18,7 +18,9 @@ const Navbar = async () => {
       <li>
         <Link href="/">Home</Link>
       </li>
-      <ProfileButton>Profile</ProfileButton>
+      <li>
+        <ProfileButton>Profile</ProfileButton>
+      </li>
     </>
   );
 
